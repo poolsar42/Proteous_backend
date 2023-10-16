@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
+from models.request import XGBoostRequest
+from models.response import XGBoostResponse
+from models.service import XGBoostService
+import xgboost
 
 app = FastAPI()
 
@@ -41,3 +45,8 @@ async def substring_search():
         result = df[df['name'].str.startswith(substring)]
         return result.to_json(orient='records')
     return jsonify([])
+
+
+@app.post('/predict', response_model=XGBoostResponse)
+async def predict(request: XGBoostRequest):
+    return XGBoostService.predict(request)
