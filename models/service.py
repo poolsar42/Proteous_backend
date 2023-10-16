@@ -7,6 +7,8 @@ import pickle
 import pandas as pd
 import re
 
+# Load the model
+MODEL = pickle.load(open("xgboost_model_dalyan", "rb"))
 
 # PhysioChemical Properties of Amino acids
 
@@ -89,11 +91,9 @@ class XGBoostService:
         df = df.drop(['protein_sequence'], axis=1)
         df = df.drop(['sequence_length'], axis=1)
 
-        # Load the model
-        model = pickle.load(open("xgboost_model_dalyan", "rb"))
 
         # Make predictions
-        predictions = model.predict(df)
+        predictions = MODEL.predict(df)
         predicted_tm = predictions[0]
 
         return XGBoostResponse(tm=predicted_tm)
