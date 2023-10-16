@@ -28,14 +28,9 @@ app.add_middleware(
 df = pd.read_csv('data.csv')  # Assuming data.csv is your CSV file
 
 
-@app.get("/")
-async def main():
-    return {"message": "Hello World"}
-
-
 @app.get('/all-entries')
 async def all_entries():
-    return df.head().to_json(orient='records')
+    return df.sample(5, random_state=1).to_json(orient='records')
 
 
 @app.get('/substring-search')
