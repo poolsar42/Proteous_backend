@@ -10,8 +10,6 @@ origins = [
     "http://localhost:3000",
     "http://127.0.0.1",
     "https://proteous-9352268979b2.herokuapp.com",
-    "https://proteous-9352268979b2.herokuapp.com:3000",
-    "https://proteous-9352268979b2.herokuapp.com:8000",
     "https://proteous.work"
 ]
 
