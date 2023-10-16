@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import pandas as pd
 from flask_cors import CORS, cross_origin
+import os
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -23,4 +24,5 @@ def substring_search():
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
