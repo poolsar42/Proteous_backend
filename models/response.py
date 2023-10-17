@@ -8,3 +8,4 @@ class XGBoostResponse(BaseModel):
 class BestVarianceResponse(BaseModel):
     sequences: list = Field(
         description="List of sequences to predict the Tm of")
+    tms: list = Field(description="List of predicted Tms")

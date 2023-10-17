@@ -57,7 +57,7 @@ async def get_best_variants(request: BestVarianceRequest):
                     tms[p] = tm
                     break
 
-    return BestVarianceResponse(sequences=[''.join(x) for x in results])
+    return BestVarianceResponse(sequences=[''.join(x) for x in results], tms=tms)
 
 
 @app.get('/substring-search')
